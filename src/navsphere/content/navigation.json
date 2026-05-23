@@ -30,14 +30,6 @@
           "enabled": true
         },
         {
-          "id": "1_6",
-          "title": "百度",
-          "href": "https://baidu.com",
-          "description": "全球领先的中文搜索引擎、致力于让网民更便捷地获取信息，找到所求。百度超过千亿的中文网页数据库，可以瞬间找到相关的搜索结果。",
-          "icon": "/assets/favicon_1777442227055.ico",
-          "enabled": true
-        },
-        {
           "id": "1_7",
           "title": "Tensor.art",
           "href": "https://tensor.art/",
