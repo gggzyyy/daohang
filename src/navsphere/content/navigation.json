@@ -1522,15 +1522,6 @@
       "enabled": true,
       "items": [],
       "subCategories": []
-    },
-    {
-      "id": "1781271119512",
-      "title": "视频处理",
-      "icon": "FolderKanban",
-      "description": "视频处理、生成网站",
-      "enabled": true,
-      "items": [],
-      "subCategories": []
     }
   ]
 }
