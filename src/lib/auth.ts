@@ -16,12 +16,12 @@ declare module 'next-auth' {
   }
 }
 
-// 安全地解析 secret：NEXTAUTH_SECRET 优先，其次 GITHUB_CLIENT_SECRET，
-// 若两者都没有则用一个固定的 fallback（生产环境应必须设置 NEXTAUTH_SECRET）
+// 安全地解析 secret：按优先级
+// 1) NEXTAUTH_SECRET  2) AUTH_SECRET  3) GITHUB_CLIENT_SECRET  4) 兜底字符串
 function resolveSecret(): string {
   if (process.env.NEXTAUTH_SECRET) return process.env.NEXTAUTH_SECRET
+  if (process.env.AUTH_SECRET) return process.env.AUTH_SECRET
   if (process.env.GITHUB_CLIENT_SECRET) return process.env.GITHUB_CLIENT_SECRET
-  // 最后的兜底：NextAuth 只要有非空字符串就不会直接 500
   return 'please-set-nextauth-secret-in-vercel'
 }
 
@@ -34,7 +34,9 @@ if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
       authorization: {
         params: { scope: 'repo' }
-      }
+      },
+      // 不依赖 NEXTAUTH_URL，callback URL 由 NextAuth 从请求自动推断
+      checks: ['state']
     })
   )
 }

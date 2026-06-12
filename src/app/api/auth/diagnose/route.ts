@@ -15,14 +15,16 @@ export async function GET() {
     runtime: 'node',
     vars: {
       NEXTAUTH_SECRET: check('NEXTAUTH_SECRET'),
+      AUTH_SECRET: check('AUTH_SECRET'),
       NEXTAUTH_URL: check('NEXTAUTH_URL'),
       GITHUB_CLIENT_ID: check('GITHUB_CLIENT_ID'),
       GITHUB_CLIENT_SECRET: check('GITHUB_CLIENT_SECRET'),
     },
-    computed_secret: {
-      primary: !!process.env.NEXTAUTH_SECRET,
-      fallback_to_client_secret: !process.env.NEXTAUTH_SECRET && !!process.env.GITHUB_CLIENT_SECRET,
-      empty: !process.env.NEXTAUTH_SECRET && !process.env.GITHUB_CLIENT_SECRET,
+    effective_secret: {
+      from_nextauth: !!process.env.NEXTAUTH_SECRET,
+      from_auth: !process.env.NEXTAUTH_SECRET && !!process.env.AUTH_SECRET,
+      from_github: !process.env.NEXTAUTH_SECRET && !process.env.AUTH_SECRET && !!process.env.GITHUB_CLIENT_SECRET,
+      fallback: !process.env.NEXTAUTH_SECRET && !process.env.AUTH_SECRET && !process.env.GITHUB_CLIENT_SECRET,
     },
   })
 }
