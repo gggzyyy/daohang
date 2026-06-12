@@ -1299,6 +1299,72 @@
       "items": [],
       "subCategories": [
         {
+          "id": "8_2",
+          "title": "LOGO设计",
+          "href": "#LOGO设计",
+          "icon": "",
+          "description": "",
+          "items": [
+            {
+              "id": "8_2_1",
+              "title": "Iconsfeed",
+              "href": "http://www.iconsfeed.com/",
+              "description": "iOS icons gallery",
+              "icon": "/assets/images/logos/iconsfeed.webp",
+              "enabled": true
+            },
+            {
+              "id": "8_2_2",
+              "title": "iOS Icon Gallery",
+              "href": "http://iosicongallery.com/",
+              "description": "Showcasing beautiful icon designs from the iOS App Store",
+              "icon": "/assets/images/logos/iosicongallery.webp",
+              "enabled": true
+            },
+            {
+              "id": "8_2_3",
+              "title": "World Vector Logo",
+              "href": "https://worldvectorlogo.com/",
+              "description": "Brand logos free to download",
+              "icon": "/assets/images/logos/worldvectorlogo.webp",
+              "enabled": true
+            },
+            {
+              "id": "8_2_4",
+              "title": "Instant Logo Search",
+              "href": "http://instantlogosearch.com/",
+              "description": "Search & download thousands of logos instantly",
+              "icon": "/assets/images/logos/InstantLogoSearch.webp",
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "id": "8_3",
+          "title": "平面素材",
+          "href": "#平面素材",
+          "icon": "",
+          "description": "",
+          "items": [
+            {
+              "id": "8_3_1",
+              "title": "Freepik",
+              "href": "https://www.freepik.com/",
+              "description": "免费矢量素材",
+              "icon": "/assets/images/logos/freepik.webp",
+              "enabled": true
+            },
+            {
+              "id": "8_3_2",
+              "title": "Unsplash",
+              "href": "https://unsplash.com/",
+              "description": "免费高清图片",
+              "icon": "/assets/images/logos/unsplash.webp",
+              "enabled": true
+            }
+          ]
+        },
+        {
           "id": "8_1",
           "title": "图标素材",
           "href": "#图标素材",
@@ -1399,72 +1465,6 @@
               "href": "http://simplelineicons.com/",
               "description": "Simple line Icons pack",
               "icon": "/assets/images/logos/simplelineicons.webp",
-              "enabled": true
-            }
-          ]
-        },
-        {
-          "id": "8_2",
-          "title": "LOGO设计",
-          "href": "#LOGO设计",
-          "icon": "",
-          "description": "",
-          "items": [
-            {
-              "id": "8_2_1",
-              "title": "Iconsfeed",
-              "href": "http://www.iconsfeed.com/",
-              "description": "iOS icons gallery",
-              "icon": "/assets/images/logos/iconsfeed.webp",
-              "enabled": true
-            },
-            {
-              "id": "8_2_2",
-              "title": "iOS Icon Gallery",
-              "href": "http://iosicongallery.com/",
-              "description": "Showcasing beautiful icon designs from the iOS App Store",
-              "icon": "/assets/images/logos/iosicongallery.webp",
-              "enabled": true
-            },
-            {
-              "id": "8_2_3",
-              "title": "World Vector Logo",
-              "href": "https://worldvectorlogo.com/",
-              "description": "Brand logos free to download",
-              "icon": "/assets/images/logos/worldvectorlogo.webp",
-              "enabled": true
-            },
-            {
-              "id": "8_2_4",
-              "title": "Instant Logo Search",
-              "href": "http://instantlogosearch.com/",
-              "description": "Search & download thousands of logos instantly",
-              "icon": "/assets/images/logos/InstantLogoSearch.webp",
-              "enabled": true
-            }
-          ]
-        },
-        {
-          "id": "8_3",
-          "title": "平面素材",
-          "href": "#平面素材",
-          "icon": "",
-          "description": "",
-          "items": [
-            {
-              "id": "8_3_1",
-              "title": "Freepik",
-              "href": "https://www.freepik.com/",
-              "description": "免费矢量素材",
-              "icon": "/assets/images/logos/freepik.webp",
-              "enabled": true
-            },
-            {
-              "id": "8_3_2",
-              "title": "Unsplash",
-              "href": "https://unsplash.com/",
-              "description": "免费高清图片",
-              "icon": "/assets/images/logos/unsplash.webp",
               "enabled": true
             }
           ]
