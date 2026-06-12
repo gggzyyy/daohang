@@ -202,16 +202,7 @@
           "icon": "BookOpen",
           "description": "",
           "enabled": true,
-          "items": [
-            {
-              "id": "1760605598288",
-              "title": "veo-3视频",
-              "href": "https://aistudio.google.com/models/veo-3",
-              "description": "Google DeepMind 推出的最新一代 AI 视频生成模型，是目前 AI 视频领域的标杆之一",
-              "icon": "/assets/favicon_1760605601454.webp",
-              "enabled": true
-            }
-          ]
+          "items": []
         },
         {
           "id": "eb656a11-5442-4670-9cb6-9ba9bd08682f",
@@ -1498,6 +1489,14 @@
           "href": "https://sora.chatgpt.com/",
           "description": "让用户用自然语言，直接生成高质量、高保真的视频内容。你只需要用文字描述一个场景、故事或画面，Sora 就能生成一段连贯、细节丰富的视频。",
           "icon": "/assets/favicon_1760435422176.webp",
+          "enabled": true
+        },
+        {
+          "id": "1760605598288",
+          "title": "veo-3视频",
+          "href": "https://aistudio.google.com/models/veo-3",
+          "description": "Google DeepMind 推出的最新一代 AI 视频生成模型，是目前 AI 视频领域的标杆之一",
+          "icon": "/assets/favicon_1760605601454.webp",
           "enabled": true
         }
       ],
