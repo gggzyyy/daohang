@@ -19,8 +19,8 @@ declare module 'next-auth' {
 const config = {
   providers: [
     GithubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID!,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+      clientId: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
       authorization: {
         params: { scope: 'repo' }
       }
@@ -46,7 +46,9 @@ const config = {
   secret: process.env.NEXTAUTH_SECRET ?? process.env.GITHUB_CLIENT_SECRET,
   session: {
     strategy: 'jwt'
-  }
+  },
+  trustHost: true,
+  debug: process.env.NODE_ENV === 'development'
 } satisfies NextAuthConfig
 
 const handler = NextAuth(config)

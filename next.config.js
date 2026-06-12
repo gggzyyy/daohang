@@ -38,7 +38,7 @@ const nextConfig = {
   // Cloudflare Pages configuration
   experimental: {
     serverActions: {
-      allowedOrigins: ['localhost', 'newkit.site']
+        allowedOrigins: ['localhost', 'newkit.site', '9277277.xyz', 'vercel.app']
     },
     optimizePackageImports: ['lucide-react', 'date-fns', 'lodash']
   }
