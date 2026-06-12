@@ -16,8 +16,19 @@ declare module 'next-auth' {
   }
 }
 
-const config = {
-  providers: [
+// 安全地解析 secret：NEXTAUTH_SECRET 优先，其次 GITHUB_CLIENT_SECRET，
+// 若两者都没有则用一个固定的 fallback（生产环境应必须设置 NEXTAUTH_SECRET）
+function resolveSecret(): string {
+  if (process.env.NEXTAUTH_SECRET) return process.env.NEXTAUTH_SECRET
+  if (process.env.GITHUB_CLIENT_SECRET) return process.env.GITHUB_CLIENT_SECRET
+  // 最后的兜底：NextAuth 只要有非空字符串就不会直接 500
+  return 'please-set-nextauth-secret-in-vercel'
+}
+
+const providers = []
+
+if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
+  providers.push(
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
@@ -25,7 +36,11 @@ const config = {
         params: { scope: 'repo' }
       }
     })
-  ],
+  )
+}
+
+const config = {
+  providers,
   callbacks: {
     async jwt({ token, account }) {
       if (account?.access_token) {
@@ -43,7 +58,7 @@ const config = {
   pages: {
     signIn: '/auth/signin'
   },
-  secret: process.env.NEXTAUTH_SECRET ?? process.env.GITHUB_CLIENT_SECRET,
+  secret: resolveSecret(),
   session: {
     strategy: 'jwt'
   },
