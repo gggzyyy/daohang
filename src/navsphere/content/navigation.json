@@ -139,9 +139,9 @@
             },
             {
               "id": "1739871926277",
-              "title": "perplexity",
+              "title": "perplexity（无幻觉AI）",
               "href": "https://www.perplexity.ai/",
-              "description": "一个人工智能助手，旨在为您提供信息、解答问题和帮助您完成各种任务。",
+              "description": "没有幻觉的AI，专业权威一手资料回答。",
               "icon": "/assets/img_1739871936809.webp",
               "enabled": true
             },
