@@ -205,9 +205,9 @@
           "items": [
             {
               "id": "1760605598288",
-              "title": "veo-3",
+              "title": "veo-3视频",
               "href": "https://aistudio.google.com/models/veo-3",
-              "description": "The fastest path from prompt to production with Gemini",
+              "description": "Google DeepMind 推出的最新一代 AI 视频生成模型，是目前 AI 视频领域的标杆之一",
               "icon": "/assets/favicon_1760605601454.webp",
               "enabled": true
             }
