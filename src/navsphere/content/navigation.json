@@ -14,14 +14,6 @@
           "enabled": true
         },
         {
-          "id": "1_5",
-          "title": "Producthunt",
-          "href": "https://www.producthunt.com/",
-          "description": "发现新鲜有趣的产品",
-          "icon": "/assets/images/logos/producthunt.webp",
-          "enabled": true
-        },
-        {
           "id": "1_7",
           "title": "Tensor.art",
           "href": "https://tensor.art/",
