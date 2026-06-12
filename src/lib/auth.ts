@@ -69,6 +69,8 @@ const config = {
     strategy: 'jwt'
   },
   trustHost: true,
+  // Vercel 使用反向代理，需要 trustProxy 来正确读取 X-Forwarded-* 头
+  trustProxy: true,
   // 生产环境自动推断 URL，开发环境用配置的 NEXTAUTH_URL
   ...(effectiveUrl && { url: effectiveUrl }),
   debug: process.env.NODE_ENV === 'development'
