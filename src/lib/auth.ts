@@ -25,6 +25,10 @@ function resolveSecret(): string {
   return 'please-set-nextauth-secret-in-vercel'
 }
 
+// 生产环境忽略 NEXTAUTH_URL，让 NextAuth 从请求自动推断（避免 http/https 协议不匹配）
+const isProduction = process.env.NODE_ENV === 'production' || process.env.VERCEL_ENV === 'production'
+const effectiveUrl = isProduction ? undefined : process.env.NEXTAUTH_URL
+
 const providers = []
 
 if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
@@ -65,6 +69,8 @@ const config = {
     strategy: 'jwt'
   },
   trustHost: true,
+  // 生产环境自动推断 URL，开发环境用配置的 NEXTAUTH_URL
+  ...(effectiveUrl && { url: effectiveUrl }),
   debug: process.env.NODE_ENV === 'development'
 } satisfies NextAuthConfig
 
