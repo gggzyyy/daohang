@@ -194,16 +194,7 @@
           "icon": "Edit",
           "description": "",
           "enabled": true,
-          "items": [
-            {
-              "id": "1767055771104",
-              "title": "Awesome MCP Servers",
-              "href": "https://mcpservers.org/",
-              "description": "A curated collection of MCP (Model Context Protocol) servers. Search and discover MCP servers and clients.",
-              "icon": "/assets/favicon_1767055774467.png",
-              "enabled": true
-            }
-          ]
+          "items": []
         },
         {
           "id": "428d0ba1-78f8-48d6-83db-f837f3830e1f",
@@ -313,6 +304,14 @@
           "href": "https://smithery.ai/",
           "description": "各种各样的 MCP Server",
           "icon": "/assets/img_1752554273115.webp",
+          "enabled": true
+        },
+        {
+          "id": "1767055771104",
+          "title": "Awesome MCP Servers",
+          "href": "https://mcpservers.org/",
+          "description": "A curated collection of MCP (Model Context Protocol) servers. Search and discover MCP servers and clients.",
+          "icon": "/assets/favicon_1767055774467.png",
           "enabled": true
         }
       ],
