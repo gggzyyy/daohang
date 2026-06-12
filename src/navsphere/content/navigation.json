@@ -164,14 +164,6 @@
           ]
         },
         {
-          "id": "21bf96f3-acb0-4e28-aaa8-2759ac55d278",
-          "title": "MCP Server",
-          "icon": "Edit",
-          "description": "",
-          "enabled": true,
-          "items": []
-        },
-        {
           "id": "428d0ba1-78f8-48d6-83db-f837f3830e1f",
           "title": "多媒体",
           "icon": "BookOpen",
