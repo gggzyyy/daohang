@@ -124,6 +124,14 @@
           "description": "按照自己的方式发布热爱的事物。无论您是想要与他人分享知识、经验还是最新资讯，都可以创建独一无二的精美博客。",
           "icon": "/assets/favicon_1780581836186.png",
           "enabled": true
+        },
+        {
+          "id": "site_1781270658439_f05fdvwat",
+          "title": "Vercel",
+          "href": "https://vercel.com/",
+          "description": "Vercel gives developers the frameworks, workflows, and infrastructure to build a faster, more personalized web.",
+          "icon": "/assets/favicon_1781270639799.png",
+          "enabled": true
         }
       ],
       "subCategories": [],
