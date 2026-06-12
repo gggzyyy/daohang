@@ -196,14 +196,6 @@
           "enabled": true,
           "items": [
             {
-              "id": "1752554261491",
-              "title": "MCP Server 集合站",
-              "href": "https://smithery.ai/",
-              "description": "各种各样的 MCP Server",
-              "icon": "/assets/img_1752554273115.webp",
-              "enabled": true
-            },
-            {
               "id": "1767055771104",
               "title": "Awesome MCP Servers",
               "href": "https://mcpservers.org/",
@@ -313,6 +305,14 @@
           "href": "https://news.ycombinator.com/",
           "description": "它不是普通的新闻聚合，而是一个由全球顶尖开发者共同维护的「技术过滤器」，帮你高效获取最有价值的信息。",
           "icon": "/assets/favicon_1761724837449.svg",
+          "enabled": true
+        },
+        {
+          "id": "1752554261491",
+          "title": "MCP Server 集合站",
+          "href": "https://smithery.ai/",
+          "description": "各种各样的 MCP Server",
+          "icon": "/assets/img_1752554273115.webp",
           "enabled": true
         }
       ],
