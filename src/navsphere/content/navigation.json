@@ -6,14 +6,6 @@
       "icon": "Star",
       "items": [
         {
-          "id": "1_2",
-          "title": "Vercel1111",
-          "href": "https://vercel.com/",
-          "description": "Vercel 提供开发者工具和云基础设施，帮助构建、扩展和保护更快、更个性化的网络应用。",
-          "icon": "/assets/images/logos/vercel.webp",
-          "enabled": true
-        },
-        {
           "id": "1_4",
           "title": "Google AdSense",
           "href": "https://www.google.com/adsense/",
