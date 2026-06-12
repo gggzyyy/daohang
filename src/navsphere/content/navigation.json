@@ -164,14 +164,6 @@
           ]
         },
         {
-          "id": "428d0ba1-78f8-48d6-83db-f837f3830e1f",
-          "title": "多媒体",
-          "icon": "BookOpen",
-          "description": "",
-          "enabled": true,
-          "items": []
-        },
-        {
           "id": "8f5e0374-2ee9-4012-acac-baecb515d826",
           "title": "提示词助手",
           "icon": "Book",
