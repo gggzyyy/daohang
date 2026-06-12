@@ -4,9 +4,6 @@ import { AdminLayoutClient } from './AdminLayoutClient'
 import { Toaster } from "@/registry/new-york/ui/toaster"
 import { Metadata } from 'next'
 
-export const runtime = 'edge'
-
-
 export const metadata: Metadata = {
   title: 'NavSphere Admin',
   description: 'NavSphere Admin Dashboard',
@@ -27,7 +24,6 @@ export default async function AdminLayout({
     session = await auth()
   } catch (error) {
     console.error('[AdminLayout] auth() failed:', error)
-    redirect('/auth/signin')
   }
 
   if (!session?.user) {

@@ -17,17 +17,12 @@ declare module 'next-auth' {
 }
 
 // 安全地解析 secret：按优先级
-// 1) NEXTAUTH_SECRET  2) AUTH_SECRET  3) GITHUB_CLIENT_SECRET  4) 兜底字符串
 function resolveSecret(): string {
   if (process.env.NEXTAUTH_SECRET) return process.env.NEXTAUTH_SECRET
   if (process.env.AUTH_SECRET) return process.env.AUTH_SECRET
   if (process.env.GITHUB_CLIENT_SECRET) return process.env.GITHUB_CLIENT_SECRET
-  return 'please-set-nextauth-secret-in-vercel'
+  return 'fallback-nextauth-secret-please-set-in-vercel'
 }
-
-// 生产环境忽略 NEXTAUTH_URL，让 NextAuth 从请求自动推断（避免 http/https 协议不匹配）
-const isProduction = process.env.NODE_ENV === 'production' || process.env.VERCEL_ENV === 'production'
-const effectiveUrl = isProduction ? undefined : process.env.NEXTAUTH_URL
 
 const providers = []
 
@@ -36,11 +31,6 @@ if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      authorization: {
-        params: { scope: 'repo' }
-      },
-      // 不依赖 NEXTAUTH_URL，callback URL 由 NextAuth 从请求自动推断
-      checks: ['state']
     })
   )
 }
@@ -69,8 +59,6 @@ const config = {
     strategy: 'jwt'
   },
   trustHost: true,
-  // 生产环境自动推断 URL，开发环境用配置的 NEXTAUTH_URL
-  ...(effectiveUrl && { url: effectiveUrl }),
   debug: process.env.NODE_ENV === 'development'
 } satisfies NextAuthConfig
 
