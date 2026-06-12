@@ -4,7 +4,12 @@ import type { NextRequest } from 'next/server'
 
 export async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith('/admin')) {
-    const session = await auth()
+    let session = null
+    try {
+      session = await auth()
+    } catch (error) {
+      console.error('[middleware] auth() failed:', error)
+    }
 
     if (!session?.user) {
       const callbackUrl = request.url
