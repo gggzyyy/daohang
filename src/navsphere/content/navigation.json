@@ -204,14 +204,6 @@
           "enabled": true,
           "items": [
             {
-              "id": "1760435371540",
-              "title": "Suno | AI Music",
-              "href": "https://suno.com/home",
-              "description": " 音乐生成工具，以生成的歌曲「像真人唱的一样」而闻名，被称为「AI 音乐天花板」",
-              "icon": "/assets/favicon_1760435376153.webp",
-              "enabled": true
-            },
-            {
               "id": "1760435417839",
               "title": "Sora文本 / 图像到视频生成模型",
               "href": "https://sora.chatgpt.com/",
@@ -1515,7 +1507,16 @@
       "icon": "Music",
       "description": "音乐、音频制作、处理",
       "enabled": true,
-      "items": [],
+      "items": [
+        {
+          "id": "1760435371540",
+          "title": "Suno | AI Music",
+          "href": "https://suno.com/home",
+          "description": " 音乐生成工具，以生成的歌曲「像真人唱的一样」而闻名，被称为「AI 音乐天花板」",
+          "icon": "/assets/favicon_1760435376153.webp",
+          "enabled": true
+        }
+      ],
       "subCategories": []
     }
   ]
