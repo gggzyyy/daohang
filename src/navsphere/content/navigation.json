@@ -204,14 +204,6 @@
           "enabled": true,
           "items": [
             {
-              "id": "1760435417839",
-              "title": "Sora文本 / 图像到视频生成模型",
-              "href": "https://sora.chatgpt.com/",
-              "description": "让用户用自然语言，直接生成高质量、高保真的视频内容。你只需要用文字描述一个场景、故事或画面，Sora 就能生成一段连贯、细节丰富的视频。",
-              "icon": "/assets/favicon_1760435422176.webp",
-              "enabled": true
-            },
-            {
               "id": "1760435669948",
               "title": "Nano Banana",
               "href": "https://aistudio.google.com/gen-media",
@@ -1498,7 +1490,16 @@
       "icon": "Video",
       "description": "",
       "enabled": true,
-      "items": [],
+      "items": [
+        {
+          "id": "1760435417839",
+          "title": "Sora文本 / 图像到视频生成模型",
+          "href": "https://sora.chatgpt.com/",
+          "description": "让用户用自然语言，直接生成高质量、高保真的视频内容。你只需要用文字描述一个场景、故事或画面，Sora 就能生成一段连贯、细节丰富的视频。",
+          "icon": "/assets/favicon_1760435422176.webp",
+          "enabled": true
+        }
+      ],
       "subCategories": []
     },
     {
