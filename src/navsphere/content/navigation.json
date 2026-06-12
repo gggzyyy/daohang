@@ -210,16 +210,7 @@
           "icon": "Book",
           "description": "",
           "enabled": true,
-          "items": [
-            {
-              "id": "1760513538759",
-              "title": "v0 by Vercel",
-              "href": "https://v0.app/",
-              "description": "Your collaborative AI assistant to design, iterate, and scale full-stack applications for the web.",
-              "icon": "/assets/favicon_1760513560381.webp",
-              "enabled": true
-            }
-          ]
+          "items": []
         },
         {
           "id": "8f5e0374-2ee9-4012-acac-baecb515d826",
@@ -279,6 +270,14 @@
           "href": "https://mcpservers.org/",
           "description": "A curated collection of MCP (Model Context Protocol) servers. Search and discover MCP servers and clients.",
           "icon": "/assets/favicon_1767055774467.png",
+          "enabled": true
+        },
+        {
+          "id": "1760513538759",
+          "title": "v0 by Vercel",
+          "href": "https://v0.app/",
+          "description": "Vercel 推出的AI 驱动的前端 UI 生成工具，也是目前 React/Next.js 开发者最常用的 AI 辅助工具之一，主打「从设计到代码」的一键生成",
+          "icon": "/assets/favicon_1760513560381.webp",
           "enabled": true
         }
       ],
