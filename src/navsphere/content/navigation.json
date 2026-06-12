@@ -30,14 +30,6 @@
           "enabled": true
         },
         {
-          "id": "item-1765687115114",
-          "enabled": true,
-          "title": "PageSpeed Insights",
-          "href": "https://pagespeed.web.dev/",
-          "description": "",
-          "icon": "/assets/favicon_1765687105275.webp"
-        },
-        {
           "id": "1768145641850",
           "title": "microsoft 开发者",
           "href": "https://partner.microsoft.com/zh-cn/dashboard/microsoftedge/overview",
