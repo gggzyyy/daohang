@@ -14,14 +14,6 @@
           "enabled": true
         },
         {
-          "id": "1761724833829",
-          "title": "Hacker News",
-          "href": "https://news.ycombinator.com/",
-          "description": "",
-          "icon": "/assets/favicon_1761724837449.svg",
-          "enabled": true
-        },
-        {
           "id": "1764304637626",
           "title": "Google 云端硬盘",
           "href": "https://drive.google.com/",
@@ -337,6 +329,14 @@
           "href": "https://free-for.dev/#/",
           "description": "一个由全球开发者共同维护的免费资源目录，帮你快速找到各种开发服务的免费套餐，它收录了几乎所有开发者能用到的免费服务，覆盖全链路",
           "icon": "/assets/favicon_1760507241370.webp",
+          "enabled": true
+        },
+        {
+          "id": "1761724833829",
+          "title": "Hacker News",
+          "href": "https://news.ycombinator.com/",
+          "description": "它不是普通的新闻聚合，而是一个由全球顶尖开发者共同维护的「技术过滤器」，帮你高效获取最有价值的信息。",
+          "icon": "/assets/favicon_1761724837449.svg",
           "enabled": true
         }
       ],
