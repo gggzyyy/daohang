@@ -1,5 +1,5 @@
 import NextAuth from 'next-auth'
-import GithubProvider from 'next-auth/providers/github'
+import CredentialsProvider from 'next-auth/providers/credentials'
 import type { DefaultSession, NextAuthConfig } from 'next-auth'
 
 declare module 'next-auth' {
@@ -24,23 +24,42 @@ function resolveSecret(): string {
   return 'fallback-nextauth-secret-please-set-in-vercel'
 }
 
-const providers = []
+const providers = [
+  CredentialsProvider({
+    name: '管理员登录',
+    credentials: {
+      username: { label: '用户名', type: 'text' },
+      password: { label: '密码', type: 'password' },
+    },
+    async authorize(credentials) {
+      // 从环境变量读取管理员账号密码
+      // 优先用 ADMIN_USERNAME / ADMIN_PASSWORD，其次用 GITHUB_CLIENT_ID / GITHUB_CLIENT_SECRET 作为备选
+      const validUsername = process.env.ADMIN_USERNAME || process.env.GITHUB_CLIENT_ID || 'admin'
+      const validPassword = process.env.ADMIN_PASSWORD || process.env.GITHUB_CLIENT_SECRET || 'admin123'
 
-if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
-  providers.push(
-    GithubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    })
-  )
-}
+      if (
+        credentials?.username === validUsername &&
+        credentials?.password === validPassword
+      ) {
+        return {
+          id: 'admin',
+          name: '管理员',
+          email: 'admin@navsphere.local',
+          image: undefined,
+        }
+      }
+
+      return null
+    },
+  }),
+]
 
 const config = {
   providers,
   callbacks: {
-    async jwt({ token, account }) {
-      if (account?.access_token) {
-        token.accessToken = account.access_token
+    async jwt({ token, user }) {
+      if (user) {
+        token.accessToken = 'admin-session'
       }
       return token
     },
