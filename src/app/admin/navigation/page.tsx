@@ -92,13 +92,28 @@ export default function NavigationPage() {
 
   const handleMoveToTop = async (id: string) => {
     try {
-      const response = await fetch(`/api/navigation/${id}/move-to-top`, {
-        method: 'POST'
+      const currentItems = Array.isArray(items) ? [...items] : []
+      const sourceIndex = currentItems.findIndex(item => item.id === id)
+      if (sourceIndex <= 0) return
+
+      const [movedItem] = currentItems.splice(sourceIndex, 1)
+      currentItems.splice(0, 0, movedItem)
+
+      await mutate(currentItems, { revalidate: false })
+
+      const response = await fetch('/api/navigation/reorder', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sourceIndex,
+          destinationIndex: 0,
+          itemId: id
+        })
       })
 
       if (!response.ok) throw new Error('Failed to move')
 
-      mutate()
+      await mutate()
       toast({
         title: "成功",
         description: "移动成功"
@@ -114,13 +129,29 @@ export default function NavigationPage() {
 
   const handleMoveToBottom = async (id: string) => {
     try {
-      const response = await fetch(`/api/navigation/${id}/move-to-bottom`, {
-        method: 'POST'
+      const currentItems = Array.isArray(items) ? [...items] : []
+      const sourceIndex = currentItems.findIndex(item => item.id === id)
+      const destinationIndex = currentItems.length - 1
+      if (sourceIndex < 0 || sourceIndex === destinationIndex) return
+
+      const [movedItem] = currentItems.splice(sourceIndex, 1)
+      currentItems.splice(destinationIndex, 0, movedItem)
+
+      await mutate(currentItems, { revalidate: false })
+
+      const response = await fetch('/api/navigation/reorder', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sourceIndex,
+          destinationIndex,
+          itemId: id
+        })
       })
 
       if (!response.ok) throw new Error('Failed to move')
 
-      mutate()
+      await mutate()
       toast({
         title: "成功",
         description: "移动成功"
