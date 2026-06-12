@@ -164,31 +164,6 @@
           ]
         },
         {
-          "id": "cbb3e33d-408b-41ba-9e9a-e0444303e3ff",
-          "title": "生产力工具",
-          "icon": "Book",
-          "description": "",
-          "enabled": true,
-          "items": [
-            {
-              "id": "1736418296509",
-              "title": "Napkin",
-              "href": "https://www.napkin.ai/",
-              "description": "文本一键生成可视化图表\nNapkin 能够将你的文本转化为视觉内容，使分享你的想法变得快速而有效。",
-              "icon": "/assets/img_1736418335098.webp",
-              "enabled": true
-            },
-            {
-              "id": "1736911347619",
-              "title": "gamma",
-              "href": "https://gamma.app/",
-              "description": "AI生成PPT工具",
-              "icon": "/assets/img_1736911490095.webp",
-              "enabled": true
-            }
-          ]
-        },
-        {
           "id": "21bf96f3-acb0-4e28-aaa8-2759ac55d278",
           "title": "MCP Server",
           "icon": "Edit",
@@ -225,6 +200,31 @@
               "href": "https://snackprompt.com/",
               "description": "主打「分享和发现所有与 AI 相关的内容」，是目前 AI 爱好者和创作者常用的 Prompt 交流平台",
               "icon": "/assets/favicon_1765285552557.webp",
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "id": "cbb3e33d-408b-41ba-9e9a-e0444303e3ff",
+          "title": "生产力工具",
+          "icon": "Book",
+          "description": "",
+          "enabled": true,
+          "items": [
+            {
+              "id": "1736418296509",
+              "title": "Napkin",
+              "href": "https://www.napkin.ai/",
+              "description": "文本一键生成可视化图表\nNapkin 能够将你的文本转化为视觉内容，使分享你的想法变得快速而有效。",
+              "icon": "/assets/img_1736418335098.webp",
+              "enabled": true
+            },
+            {
+              "id": "1736911347619",
+              "title": "gamma",
+              "href": "https://gamma.app/",
+              "description": "AI生成PPT工具",
+              "icon": "/assets/img_1736911490095.webp",
               "enabled": true
             }
           ]
