@@ -213,9 +213,9 @@
             },
             {
               "id": "1760435417839",
-              "title": "Sora",
+              "title": "Sora文本 / 图像到视频生成模型",
               "href": "https://sora.chatgpt.com/",
-              "description": "Transform text and images into immersive videos. Animate stories, visualize ideas, and bring your concepts to life.",
+              "description": "让用户用自然语言，直接生成高质量、高保真的视频内容。你只需要用文字描述一个场景、故事或画面，Sora 就能生成一段连贯、细节丰富的视频。",
               "icon": "/assets/favicon_1760435422176.webp",
               "enabled": true
             },
