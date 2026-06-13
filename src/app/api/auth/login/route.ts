@@ -41,9 +41,10 @@ export async function POST(request: Request) {
     })
     return response
   } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error)
     console.error('[auth/login] error:', error)
     return NextResponse.json(
-      { success: false, error: '服务器错误，请稍后重试' },
+      { success: false, error: '服务器错误：' + msg },
       { status: 500 }
     )
   }

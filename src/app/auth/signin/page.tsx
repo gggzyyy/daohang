@@ -41,15 +41,22 @@ function SignInContent() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
       })
-      const data = await res.json()
-      if (data.success) {
+
+      let data: any = {}
+      try {
+        data = await res.json()
+      } catch {
+        // 返回非 JSON（例如 HTML 错误页）
+      }
+
+      if (res.ok && data.success) {
         router.push(callbackUrl)
         router.refresh()
       } else {
-        setError(data.error || '登录失败，请重试')
+        setError(data.error || '登录失败，请检查用户名和密码')
       }
-    } catch {
-      setError('登录失败，请稍后重试')
+    } catch (err: any) {
+      setError('登录失败：' + (err?.message || '网络错误'))
     } finally {
       setIsLoading(false)
     }
