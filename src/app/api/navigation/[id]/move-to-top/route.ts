@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
-import { commitFile, getFileContent } from '@/lib/github'
+import { commitFile, getFileContent, getGitHubToken } from '@/lib/github'
 import type { NavigationData } from '@/types/navigation'
 
 export async function POST(
@@ -28,10 +28,12 @@ export async function POST(
     items.splice(index - 1, 0, item)
     data.navigationItems = items
 
+    const token = getGitHubToken()
     await commitFile(
       'src/navsphere/content/navigation.json',
       JSON.stringify(data, null, 2),
-      `移动分类 "${item.title}" 到顶部`
+      `移动分类 "${item.title}" 到顶部`,
+      token
     )
 
     return NextResponse.json({ success: true })
