@@ -4,7 +4,6 @@ import { commitFile, getFileContent } from '@/lib/github'
 import type { ResourceMetadata } from '@/types/resource-metadata'
 import { uint8ArrayToBase64 } from '@/lib/buffer-utils'
 
-export const runtime = 'edge'
 
 
 

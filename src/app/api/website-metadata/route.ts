@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { uint8ArrayToBase64 } from '@/lib/buffer-utils'
 
-export const runtime = 'edge'
 
 interface VideoConfig {
     type: 'bilibili' | 'youtube'

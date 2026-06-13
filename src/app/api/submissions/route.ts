@@ -7,7 +7,6 @@ import {
     parseSubmissionFromIssueBody
 } from '@/types/submission'
 
-export const runtime = 'edge'
 
 
 const GITHUB_API = 'https://api.github.com'

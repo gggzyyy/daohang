@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server'
 import type { SiteConfig } from '@/types/site'
-export const runtime = 'edge'
 
 const defaultConfig: SiteConfig = {
   basic: {

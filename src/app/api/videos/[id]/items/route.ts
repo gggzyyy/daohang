@@ -3,7 +3,6 @@ import { auth } from '@/lib/auth'
 import { commitFile, getFileContent } from '@/lib/github'
 import type { NavigationData, NavigationItem, NavigationSubItem } from '@/types/navigation'
 
-export const runtime = 'edge'
 
 const VIDEOS_FILE_PATH = 'src/navsphere/content/videos.json'
 
