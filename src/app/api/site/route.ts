@@ -4,7 +4,7 @@ import { commitFile, getFileContent } from '@/lib/github'
 import type { SiteInfo } from '@/types/site'
 
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
     const data = await getFileContent('src/navsphere/content/site.json') as SiteInfo
     return NextResponse.json(data)

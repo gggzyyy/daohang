@@ -3,7 +3,7 @@ import { auth } from '@/lib/auth'
 import { getFileContent } from '@/lib/github'
 
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
     const session = auth(request)
     if (!session?.user?.accessToken) {

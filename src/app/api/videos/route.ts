@@ -6,7 +6,7 @@ import type { NavigationItem, NavigationData } from '@/types/navigation'
 
 const VIDEOS_FILE_PATH = 'src/navsphere/content/videos.json'
 
-export async function GET() {
+export async function GET(request: Request) {
     try {
         const data = await getFileContent(VIDEOS_FILE_PATH)
         return NextResponse.json(data)

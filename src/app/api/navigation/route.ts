@@ -4,7 +4,7 @@ import { commitFile, getFileContent } from '@/lib/github'
 import type { NavigationData, NavigationItem } from '@/types/navigation'
 
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
     const data = await getFileContent('src/navsphere/content/navigation.json')
     return NextResponse.json(data)

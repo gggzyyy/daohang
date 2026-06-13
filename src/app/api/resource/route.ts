@@ -7,7 +7,7 @@ import { uint8ArrayToBase64 } from '@/lib/buffer-utils'
 
 
 
-export async function GET() {
+export async function GET(request: Request) {
     try {
         const data = await getFileContent('src/navsphere/content/resource-metadata.json') as ResourceMetadata
         if (!data?.metadata || !Array.isArray(data.metadata)) {
