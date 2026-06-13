@@ -2,8 +2,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { COOKIE_NAME, verifySessionCookie } from '@/lib/auth'
 
-export async function middleware(request: NextRequest) {
-  // 只对 /admin 路径保护
+export function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith('/admin')) {
     const cookie = request.cookies.get(COOKIE_NAME)?.value
 
@@ -14,7 +13,7 @@ export async function middleware(request: NextRequest) {
     }
 
     try {
-      const valid = await verifySessionCookie(cookie)
+      const valid = verifySessionCookie(cookie)
       if (!valid) {
         const response = NextResponse.redirect(
           new URL('/auth/signin', request.url)

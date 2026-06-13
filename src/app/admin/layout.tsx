@@ -17,20 +17,20 @@ export const metadata: Metadata = {
   }
 }
 
-export default async function AdminLayout({
+export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const h = await headers()
+  const h = headers()
   const cookieHeader = h.get('cookie') || ''
 
-  const logged = await isLoggedIn(cookieHeader)
+  const logged = isLoggedIn(cookieHeader)
   if (!logged) {
     redirect('/auth/signin')
   }
 
-  const user = await getCurrentUser(cookieHeader)
+  const user = getCurrentUser(cookieHeader)
 
   return (
     <>

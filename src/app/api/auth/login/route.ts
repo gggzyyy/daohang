@@ -26,7 +26,7 @@ export async function POST(request: Request) {
       )
     }
 
-    const cookieValue = await createSessionCookie()
+    const cookieValue = createSessionCookie()
     const cfg = getCookieConfig()
 
     const response = NextResponse.json({ success: true })
