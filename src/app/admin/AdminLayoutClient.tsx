@@ -121,7 +121,7 @@ export function AdminLayoutClient({ children }: AdminLayoutClientProps) {
     return null
   }
 
-  const user = session?.user
+  const user = session?.user ?? { name: '', email: '', image: '' }
 
   const toggleMenuItem = (href: string) => {
     setExpandedItems(prev =>
