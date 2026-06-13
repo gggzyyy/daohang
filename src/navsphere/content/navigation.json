@@ -35,152 +35,6 @@
       "subCategories": []
     },
     {
-      "id": "1",
-      "title": "常用推荐",
-      "icon": "Star",
-      "items": [
-        {
-          "id": "1_2",
-          "title": "Vercel",
-          "href": "https://vercel.com/",
-          "description": "Vercel 提供开发者工具和云基础设施，帮助构建、扩展和保护更快、更个性化的网络应用。",
-          "icon": "/assets/images/logos/vercel.webp",
-          "enabled": true
-        },
-        {
-          "id": "1_3",
-          "title": "Cloudflare",
-          "href": "https://dash.cloudflare.com/",
-          "description": "Cloudflare以向客户提供基于反向代理的内容分发网络及分布式域名解析服务为主要业务。",
-          "icon": "/assets/images/logos/cloudflar.webp",
-          "enabled": true
-        },
-        {
-          "id": "1_1",
-          "title": "Google Analytics",
-          "href": "https://analytics.google.com/",
-          "description": "Google分析（Google Analytics）是一个由Google所提供的网站流量统计服务。",
-          "icon": "/assets/images/logos/analytics.webp",
-          "enabled": true
-        },
-        {
-          "id": "1_4",
-          "title": "Google AdSense",
-          "href": "https://www.google.com/adsense/",
-          "description": "Google AdSense广告服务。",
-          "icon": "/assets/images/logos/gads.webp",
-          "enabled": true
-        },
-        {
-          "id": "1_5",
-          "title": "Producthunt",
-          "href": "https://www.producthunt.com/",
-          "description": "发现新鲜有趣的产品",
-          "icon": "/assets/images/logos/producthunt.webp",
-          "enabled": true
-        },
-        {
-          "id": "1_6",
-          "title": "Leonardo.AI",
-          "href": "https://app.leonardo.ai/",
-          "description": "Leonardo.AI是一个人工智能绘图社区和工具。它基于Stable Diffusion人工智能模型,深度集成了其各种插件,提供强大的图片生成和创作功能。",
-          "icon": "/assets/images/logos/leonardo.webp",
-          "enabled": true
-        },
-        {
-          "id": "1_7",
-          "title": "Tensor.art",
-          "href": "https://tensor.art/",
-          "description": "Tensor.art是一个免费的在线图像生成和模型托管平台。",
-          "icon": "/assets/images/logos/tensorart.webp",
-          "enabled": true
-        },
-        {
-          "id": "1735119857233",
-          "title": "截图美化工具",
-          "href": "https://shots.so/",
-          "description": "截图美化，套上不同设备的壳，浏览器、iPhone、iPad、MacBook，Apple Watch",
-          "icon": "/assets/images/logos/shots.webp",
-          "enabled": true
-        },
-        {
-          "id": "1741747111596",
-          "title": "PostSpark",
-          "href": "https://postspark.app/",
-          "description": "Beautiful Screenshots and Mockups\nCusomizable, eye-catching presentation for any content",
-          "icon": "/assets/img_1741747241014.webp",
-          "enabled": true
-        },
-        {
-          "id": "1754229699374",
-          "title": "Lucide",
-          "href": "https://lucide.dev/",
-          "description": "Beautiful & consistent icon toolkit made by the community.",
-          "icon": "/assets/favicon_1754229702059.webp",
-          "enabled": true
-        },
-        {
-          "id": "1760507233911",
-          "title": "Free for Developers",
-          "href": "https://free-for.dev/#/",
-          "description": "Developers and Open Source authors now have a massive amount of services offering free tiers, but it can be hard to find them all to make informed decisions.",
-          "icon": "/assets/favicon_1760507241370.webp",
-          "enabled": true
-        },
-        {
-          "id": "1761724833829",
-          "title": "Hacker News",
-          "href": "https://news.ycombinator.com/",
-          "description": "",
-          "icon": "/assets/favicon_1761724837449.svg",
-          "enabled": true
-        },
-        {
-          "id": "1764304637626",
-          "title": "Google 云端硬盘",
-          "href": "https://drive.google.com/",
-          "description": "使用 Google 账号（个人用途）或 Google Workspace 账号（企业用途）访问 Google 云端硬盘。",
-          "icon": "/assets/favicon_1764304640963.webp",
-          "enabled": true
-        },
-        {
-          "id": "1765256323947",
-          "title": "Chrome Webstore Devconsole",
-          "href": "https://chrome.google.com/webstore/devconsole",
-          "description": "Chrome 开发者",
-          "icon": "/assets/favicon_1765256327613.webp",
-          "enabled": true
-        },
-        {
-          "id": "1765279305478",
-          "title": "NewKit - 在线效率工具箱",
-          "href": "https://www.newkit.site/",
-          "description": "NewKit 提供精选的在线实用工具，JSON格式化、SQL美化、加密解密等，简洁高效，数据本地处理",
-          "icon": "/assets/favicon_1765279307988.svg",
-          "enabled": true
-        },
-        {
-          "id": "item-1765686645674",
-          "enabled": true,
-          "title": "Google 趋势",
-          "href": "https://trends.google.com/trends/",
-          "description": "",
-          "icon": "/assets/favicon_1765686636721.webp"
-        },
-        {
-          "id": "item-1765687115114",
-          "enabled": true,
-          "title": "PageSpeed Insights",
-          "href": "https://pagespeed.web.dev/",
-          "description": "",
-          "icon": "/assets/favicon_1765687105275.webp"
-        }
-      ],
-      "subCategories": [],
-      "description": "",
-      "enabled": true
-    },
-    {
       "id": "9",
       "title": "AI工具包",
       "icon": "Brain",
@@ -385,6 +239,152 @@
           ]
         }
       ],
+      "description": "",
+      "enabled": true
+    },
+    {
+      "id": "1",
+      "title": "常用推荐",
+      "icon": "Star",
+      "items": [
+        {
+          "id": "1_2",
+          "title": "Vercel",
+          "href": "https://vercel.com/",
+          "description": "Vercel 提供开发者工具和云基础设施，帮助构建、扩展和保护更快、更个性化的网络应用。",
+          "icon": "/assets/images/logos/vercel.webp",
+          "enabled": true
+        },
+        {
+          "id": "1_3",
+          "title": "Cloudflare",
+          "href": "https://dash.cloudflare.com/",
+          "description": "Cloudflare以向客户提供基于反向代理的内容分发网络及分布式域名解析服务为主要业务。",
+          "icon": "/assets/images/logos/cloudflar.webp",
+          "enabled": true
+        },
+        {
+          "id": "1_1",
+          "title": "Google Analytics",
+          "href": "https://analytics.google.com/",
+          "description": "Google分析（Google Analytics）是一个由Google所提供的网站流量统计服务。",
+          "icon": "/assets/images/logos/analytics.webp",
+          "enabled": true
+        },
+        {
+          "id": "1_4",
+          "title": "Google AdSense",
+          "href": "https://www.google.com/adsense/",
+          "description": "Google AdSense广告服务。",
+          "icon": "/assets/images/logos/gads.webp",
+          "enabled": true
+        },
+        {
+          "id": "1_5",
+          "title": "Producthunt",
+          "href": "https://www.producthunt.com/",
+          "description": "发现新鲜有趣的产品",
+          "icon": "/assets/images/logos/producthunt.webp",
+          "enabled": true
+        },
+        {
+          "id": "1_6",
+          "title": "Leonardo.AI",
+          "href": "https://app.leonardo.ai/",
+          "description": "Leonardo.AI是一个人工智能绘图社区和工具。它基于Stable Diffusion人工智能模型,深度集成了其各种插件,提供强大的图片生成和创作功能。",
+          "icon": "/assets/images/logos/leonardo.webp",
+          "enabled": true
+        },
+        {
+          "id": "1_7",
+          "title": "Tensor.art",
+          "href": "https://tensor.art/",
+          "description": "Tensor.art是一个免费的在线图像生成和模型托管平台。",
+          "icon": "/assets/images/logos/tensorart.webp",
+          "enabled": true
+        },
+        {
+          "id": "1735119857233",
+          "title": "截图美化工具",
+          "href": "https://shots.so/",
+          "description": "截图美化，套上不同设备的壳，浏览器、iPhone、iPad、MacBook，Apple Watch",
+          "icon": "/assets/images/logos/shots.webp",
+          "enabled": true
+        },
+        {
+          "id": "1741747111596",
+          "title": "PostSpark",
+          "href": "https://postspark.app/",
+          "description": "Beautiful Screenshots and Mockups\nCusomizable, eye-catching presentation for any content",
+          "icon": "/assets/img_1741747241014.webp",
+          "enabled": true
+        },
+        {
+          "id": "1754229699374",
+          "title": "Lucide",
+          "href": "https://lucide.dev/",
+          "description": "Beautiful & consistent icon toolkit made by the community.",
+          "icon": "/assets/favicon_1754229702059.webp",
+          "enabled": true
+        },
+        {
+          "id": "1760507233911",
+          "title": "Free for Developers",
+          "href": "https://free-for.dev/#/",
+          "description": "Developers and Open Source authors now have a massive amount of services offering free tiers, but it can be hard to find them all to make informed decisions.",
+          "icon": "/assets/favicon_1760507241370.webp",
+          "enabled": true
+        },
+        {
+          "id": "1761724833829",
+          "title": "Hacker News",
+          "href": "https://news.ycombinator.com/",
+          "description": "",
+          "icon": "/assets/favicon_1761724837449.svg",
+          "enabled": true
+        },
+        {
+          "id": "1764304637626",
+          "title": "Google 云端硬盘",
+          "href": "https://drive.google.com/",
+          "description": "使用 Google 账号（个人用途）或 Google Workspace 账号（企业用途）访问 Google 云端硬盘。",
+          "icon": "/assets/favicon_1764304640963.webp",
+          "enabled": true
+        },
+        {
+          "id": "1765256323947",
+          "title": "Chrome Webstore Devconsole",
+          "href": "https://chrome.google.com/webstore/devconsole",
+          "description": "Chrome 开发者",
+          "icon": "/assets/favicon_1765256327613.webp",
+          "enabled": true
+        },
+        {
+          "id": "1765279305478",
+          "title": "NewKit - 在线效率工具箱",
+          "href": "https://www.newkit.site/",
+          "description": "NewKit 提供精选的在线实用工具，JSON格式化、SQL美化、加密解密等，简洁高效，数据本地处理",
+          "icon": "/assets/favicon_1765279307988.svg",
+          "enabled": true
+        },
+        {
+          "id": "item-1765686645674",
+          "enabled": true,
+          "title": "Google 趋势",
+          "href": "https://trends.google.com/trends/",
+          "description": "",
+          "icon": "/assets/favicon_1765686636721.webp"
+        },
+        {
+          "id": "item-1765687115114",
+          "enabled": true,
+          "title": "PageSpeed Insights",
+          "href": "https://pagespeed.web.dev/",
+          "description": "",
+          "icon": "/assets/favicon_1765687105275.webp"
+        }
+      ],
+      "subCategories": [],
       "description": "",
       "enabled": true
     },
