@@ -17,12 +17,12 @@ export const metadata: Metadata = {
   }
 }
 
-export default function AdminLayout({
+export default async function AdminLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const h = headers()
+  const h = await headers()
   const cookieHeader = h.get('cookie') || ''
 
   const logged = isLoggedIn(cookieHeader)
