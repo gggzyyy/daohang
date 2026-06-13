@@ -8,11 +8,10 @@ import { Sidebar } from '@/components/sidebar'
 import { SearchBar } from '@/components/search-bar'
 import { ModeToggle } from '@/components/mode-toggle'
 import { Footer } from '@/components/footer'
-import { Github, HelpCircle, Puzzle, MonitorPlay, Send } from 'lucide-react'
+import { Send, MonitorPlay, Menu } from 'lucide-react'
 import { Button } from "@/registry/new-york/ui/button"
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import { Menu } from 'lucide-react'
 
 interface NavigationContentProps {
   navigationData: NavigationData
@@ -168,48 +167,7 @@ export function NavigationContent({ navigationData, siteData }: NavigationConten
                 </Button>
               </Link>
               <ModeToggle />
-              <Link
-                href="https://github.com/tianyaxiang/NavSphere"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="访问 GitHub 仓库"
-              >
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="hover:bg-accent hover:text-accent-foreground"
-                >
-                  <Github className="h-5 w-5" />
-                </Button>
-              </Link>
-              <Link
-                href="https://github.com/tianyaxiang/navsphere-extension"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="下载浏览器插件"
-              >
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="hover:bg-accent hover:text-accent-foreground"
-                >
-                  <Puzzle className="h-5 w-5" />
-                </Button>
-              </Link>
-              <Link
-                href="https://mp.weixin.qq.com/s/XBeedyqHGJtaAa_v9EXz4A"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="查看帮助文档"
-              >
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="hover:bg-accent hover:text-accent-foreground"
-                >
-                  <HelpCircle className="h-5 w-5" />
-                </Button>
-              </Link>
+
               <Button
                 variant="ghost"
                 size="icon"
