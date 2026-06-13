@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
-import { commitFile, getFileContent, getGitHubToken } from '@/lib/github'
+import { commitFile, getFileContent } from '@/lib/github'
 import type { NavigationData } from '@/types/navigation'
 
 export async function POST(
@@ -28,7 +28,7 @@ export async function POST(
     items.splice(index + 1, 0, item)
     data.navigationItems = items
 
-    const token = getGitHubToken()
+    const token = process.env.GITHUB_PAT || process.env.GITHUB_TOKEN || process.env.GITHUB_CLIENT_SECRET || 'admin-session-token'
     await commitFile(
       'src/navsphere/content/navigation.json',
       JSON.stringify(data, null, 2),
