@@ -5,6 +5,8 @@ import { AdminLayoutClient } from './AdminLayoutClient'
 import { Toaster } from "@/registry/new-york/ui/toaster"
 import { Metadata } from 'next'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'NavSphere Admin',
   description: 'NavSphere Admin Dashboard',
