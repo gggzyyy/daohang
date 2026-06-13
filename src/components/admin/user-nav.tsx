@@ -11,9 +11,9 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { signOut } from 'next-auth/react'
 import { useTheme } from "next-themes"
-import { Moon, Sun, Monitor } from "lucide-react"
+import { Moon, Sun, Monitor, LogOut } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 interface UserNavProps {
   user: {
@@ -25,6 +25,17 @@ interface UserNavProps {
 
 export function UserNav({ user }: UserNavProps) {
   const { setTheme } = useTheme()
+  const router = useRouter()
+
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' })
+    } catch {
+      // ignore
+    }
+    router.push('/auth/signin')
+    router.refresh()
+  }
 
   return (
     <DropdownMenu>
@@ -70,8 +81,9 @@ export function UserNav({ user }: UserNavProps) {
         <DropdownMenuSeparator />
         <DropdownMenuItem
           className="text-red-600 cursor-pointer"
-          onClick={() => signOut({ callbackUrl: '/' })}
+          onClick={handleLogout}
         >
+          <LogOut className="mr-2 h-4 w-4" />
           退出登录
         </DropdownMenuItem>
       </DropdownMenuContent>

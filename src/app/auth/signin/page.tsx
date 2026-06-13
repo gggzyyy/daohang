@@ -1,11 +1,10 @@
 'use client'
 
-import { signIn } from 'next-auth/react'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useState, Suspense, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useState, Suspense } from 'react'
 import {
   Card,
   CardContent,
@@ -16,12 +15,17 @@ import {
 } from "@/components/ui/card"
 
 function SignInContent() {
+  const router = useRouter()
   const searchParams = useSearchParams()
   const callbackUrl = searchParams?.get('callbackUrl') || '/admin'
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
+
+  useEffect(() => {
+    // 自动聚焦
+  }, [])
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -32,17 +36,20 @@ function SignInContent() {
     setError('')
     setIsLoading(true)
     try {
-      const result = await signIn('credentials', {
-        username,
-        password,
-        redirect: true,
-        callbackUrl,
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
       })
-      if (result?.error) {
-        setError('用户名或密码错误')
+      const data = await res.json()
+      if (data.success) {
+        router.push(callbackUrl)
+        router.refresh()
+      } else {
+        setError(data.error || '登录失败，请重试')
       }
-    } catch (err) {
-      setError('登录失败，请重试')
+    } catch {
+      setError('登录失败，请稍后重试')
     } finally {
       setIsLoading(false)
     }
@@ -122,15 +129,7 @@ function SignInContent() {
                   className="w-full"
                   disabled={isLoading}
                 >
-                  {isLoading ? (
-                    <>
-                      登录中...
-                    </>
-                  ) : (
-                    <>
-                      登录
-                    </>
-                  )}
+                  {isLoading ? '登录中...' : '登录'}
                 </Button>
               </CardContent>
             </form>

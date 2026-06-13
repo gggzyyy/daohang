@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
-import { auth } from '@/lib/auth'
+import { isLoggedIn, getCurrentUser } from '@/lib/auth'
 import { AdminLayoutClient } from './AdminLayoutClient'
 import { Toaster } from "@/registry/new-york/ui/toaster"
 import { Metadata } from 'next'
@@ -19,24 +19,20 @@ export default async function AdminLayout({
 }: {
   children: React.ReactNode
 }) {
-  let session = null
-  try {
-    session = await auth()
-  } catch (error) {
-    console.error('[AdminLayout] auth() failed:', error)
-  }
-
-  if (!session?.user) {
+  const logged = await isLoggedIn()
+  if (!logged) {
     redirect('/auth/signin')
   }
+
+  const user = await getCurrentUser()
 
   return (
     <>
       <AdminLayoutClient
         user={{
-          name: session.user.name,
-          email: session.user.email,
-          image: session.user.image
+          name: user?.name || '管理员',
+          email: user?.email || 'admin@navsphere.local',
+          image: undefined,
         }}
       >
         {children}
@@ -44,4 +40,4 @@ export default async function AdminLayout({
       <Toaster />
     </>
   )
-} 
+}

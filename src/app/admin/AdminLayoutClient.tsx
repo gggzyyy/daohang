@@ -1,9 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { signOut } from 'next-auth/react'
 import { Button } from "@/registry/new-york/ui/button"
 import { Separator } from "@/registry/new-york/ui/separator"
 import {
@@ -105,6 +104,7 @@ const menuItems = [
 
 export function AdminLayoutClient({ children, user }: AdminLayoutClientProps) {
   const pathname = usePathname()
+  const router = useRouter()
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
   const [expandedItems, setExpandedItems] = useState<string[]>([])
   const { setTheme } = useTheme()
@@ -115,6 +115,16 @@ export function AdminLayoutClient({ children, user }: AdminLayoutClientProps) {
         ? prev.filter(item => item !== href)
         : [...prev, href]
     )
+  }
+
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' })
+    } catch {
+      // ignore
+    }
+    router.push('/auth/signin')
+    router.refresh()
   }
 
   return (
@@ -334,7 +344,7 @@ export function AdminLayoutClient({ children, user }: AdminLayoutClientProps) {
                       <DropdownMenuSeparator />
                       <DropdownMenuItem
                         className="cursor-pointer flex items-center text-red-600 focus:text-red-600 focus:bg-red-100"
-                        onClick={() => signOut({ callbackUrl: '/' })}
+                        onClick={handleLogout}
                       >
                         <LogOut className="mr-2 h-4 w-4" />
                         退出登录
