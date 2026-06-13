@@ -103,7 +103,7 @@ const menuItems = [
   }
 ]
 
-export function AdminLayoutClient({ children }: AdminLayoutClientProps) {
+export function AdminLayoutClient({ children, user }: AdminLayoutClientProps) {
   const pathname = usePathname()
   const router = useRouter()
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
@@ -117,11 +117,7 @@ export function AdminLayoutClient({ children }: AdminLayoutClientProps) {
     }
   }, [status, router])
 
-  if (status === 'loading' || status === 'unauthenticated') {
-    return null
-  }
-
-  const user = session?.user ?? { name: '', email: '', image: '' }
+  const displayUser = user || session?.user || { name: '', email: '', image: '' }
 
   const toggleMenuItem = (href: string) => {
     setExpandedItems(prev =>
@@ -274,17 +270,17 @@ export function AdminLayoutClient({ children }: AdminLayoutClientProps) {
                         <div className="flex items-center gap-3 w-full">
                           <Avatar className="h-8 w-8">
                             <AvatarImage
-                              src={user.image || ''}
-                              alt={user.name || ''}
+                              src={displayUser.image || ''}
+                              alt={displayUser.name || ''}
                             />
                             <AvatarFallback>
-                              {user.name?.charAt(0).toUpperCase() || 'U'}
+                              {displayUser.name?.charAt(0).toUpperCase() || 'U'}
                             </AvatarFallback>
                           </Avatar>
                           {!isSidebarCollapsed && (
                             <div className="flex items-center flex-1 min-w-0">
                               <span className="text-sm font-medium leading-none truncate">
-                                {user.name}
+                                {displayUser.name}
                               </span>
                               <div className="flex flex-col gap-[3px] ml-auto pl-4">
                                 <div className="h-[3px] w-[2px] rounded-full bg-muted-foreground/40" />
@@ -304,10 +300,10 @@ export function AdminLayoutClient({ children }: AdminLayoutClientProps) {
                       <DropdownMenuLabel className="font-normal">
                         <div className="flex flex-col space-y-1">
                           <p className="text-sm font-medium leading-none">
-                            {user.name}
+                            {displayUser.name}
                           </p>
                           <p className="text-xs leading-none text-muted-foreground">
-                            {user.email}
+                            {displayUser.email}
                           </p>
                         </div>
                       </DropdownMenuLabel>
