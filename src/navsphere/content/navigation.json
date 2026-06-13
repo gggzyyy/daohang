@@ -669,14 +669,6 @@
               "enabled": true
             },
             {
-              "id": "1759043375128",
-              "title": "微信公众平台",
-              "href": "https://mp.weixin.qq.com/",
-              "description": "微信公众平台支持付费合集，付费文章",
-              "icon": "/assets/favicon_1759043379047.webp",
-              "enabled": true
-            },
-            {
               "id": "1759043449477",
               "title": "小报童",
               "href": "https://xiaobot.net/",
