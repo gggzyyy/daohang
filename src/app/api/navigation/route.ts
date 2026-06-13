@@ -60,7 +60,7 @@ async function validateAndSaveNavigationData(data: NavigationData, accessToken: 
 
 export async function POST(request: Request) {
   try {
-    const session = await auth()
+    const session = auth(request)
     if (!session?.user?.accessToken) {
       return new Response('Unauthorized', { status: 401 })
     }
@@ -83,7 +83,7 @@ export async function POST(request: Request) {
 
 export async function PUT(request: Request) {
   try {
-    const session = await auth()
+    const session = auth(request)
     if (!session?.user?.accessToken) {
       return new Response('Unauthorized', { status: 401 })
     }

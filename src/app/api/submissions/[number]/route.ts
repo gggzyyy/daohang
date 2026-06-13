@@ -18,7 +18,7 @@ interface RouteParams {
 export async function PATCH(request: NextRequest, { params }: RouteParams) {
     try {
         // 验证登录
-        const session = await auth()
+        const session = auth(request)
         if (!session?.user) {
             return NextResponse.json(
                 { success: false, message: '请先登录' },

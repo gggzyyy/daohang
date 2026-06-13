@@ -30,7 +30,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const session = await auth()
+    const session = auth(request)
     if (!session?.user?.accessToken) {
       return new Response('Unauthorized', { status: 401 })
     }
