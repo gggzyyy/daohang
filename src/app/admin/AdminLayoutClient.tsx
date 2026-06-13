@@ -1,9 +1,9 @@
 'use client'
 
-import { useState } from 'react'
-import { usePathname } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { signOut } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 import { Button } from "@/registry/new-york/ui/button"
 import { Separator } from "@/registry/new-york/ui/separator"
 import {
@@ -38,11 +38,11 @@ import { useTheme } from "next-themes"
 
 interface AdminLayoutClientProps {
   children: React.ReactNode
-  user: {
+  user?: {
     name?: string | null
     email?: string | null
     image?: string | null
-  }
+  } | null
 }
 
 const menuItems = [
@@ -103,11 +103,25 @@ const menuItems = [
   }
 ]
 
-export function AdminLayoutClient({ children, user }: AdminLayoutClientProps) {
+export function AdminLayoutClient({ children }: AdminLayoutClientProps) {
   const pathname = usePathname()
+  const router = useRouter()
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
   const [expandedItems, setExpandedItems] = useState<string[]>([])
   const { setTheme } = useTheme()
+  const { data: session, status } = useSession()
+
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push('/auth/signin')
+    }
+  }, [status, router])
+
+  if (status === 'loading' || status === 'unauthenticated') {
+    return null
+  }
+
+  const user = session?.user
 
   const toggleMenuItem = (href: string) => {
     setExpandedItems(prev =>

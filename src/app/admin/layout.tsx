@@ -1,9 +1,6 @@
-import { redirect } from 'next/navigation'
-import { auth } from '@/lib/auth'
 import { AdminLayoutClient } from './AdminLayoutClient'
 import { Toaster } from "@/registry/new-york/ui/toaster"
 import { Metadata } from 'next'
-
 
 export const metadata: Metadata = {
   title: 'NavSphere Admin',
@@ -15,34 +12,17 @@ export const metadata: Metadata = {
   }
 }
 
-export default async function AdminLayout({
+export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  let session = null
-  try {
-    session = await auth()
-  } catch (e) {
-    console.error('Auth error in admin layout:', e)
-  }
-
-  if (!session?.user) {
-    redirect('/auth/signin')
-  }
-
   return (
     <>
-      <AdminLayoutClient
-        user={{
-          name: session.user.name,
-          email: session.user.email,
-          image: session.user.image
-        }}
-      >
+      <AdminLayoutClient>
         {children}
       </AdminLayoutClient>
       <Toaster />
     </>
   )
-} 
+}
