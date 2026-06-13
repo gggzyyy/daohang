@@ -3,7 +3,7 @@ import { auth } from '@/lib/auth'
 import { commitFile, getFileContent } from '@/lib/github'
 
 
-export async function POST() {
+export async function POST(request: Request) {
   try {
     const session = auth(request)
     if (!session?.user?.accessToken) {
