@@ -7,15 +7,14 @@ export const runtime = 'edge'
 
 export async function POST(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const session = await auth()
     if (!session?.user?.accessToken) {
       return new Response('Unauthorized', { status: 401 })
     }
-
-    const id = params.id
     const data = await getFileContent('src/navsphere/content/navigation.json') as NavigationData
 
     if (!data.navigationItems || !Array.isArray(data.navigationItems)) {
