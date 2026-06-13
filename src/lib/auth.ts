@@ -1,6 +1,9 @@
-// 简单的账号密码登录系统
-// session cookie 签名格式: admin.<timestamp>.<hmac-sha256签名>
-// 同时支持 Node.js runtime（用 crypto 模块）和 Edge Runtime（用 Web Crypto）
+// 纯 Web Crypto 实现的登录系统
+// 不依赖 Node.js crypto 模块，完全使用标准 Web API
+// 兼容 Node.js 18+ 和 Edge Runtime
+
+const COOKIE_NAME = 'navsphere_admin_session'
+const SESSION_MAX_AGE = 60 * 60 * 24 * 7 // 7 天
 
 // ============ 配置读取 ============
 
@@ -24,10 +27,7 @@ function getGitHubToken(): string {
   return 'admin-session-token'
 }
 
-// ============ 签名核心：检测运行时并选择合适的 crypto API ============
-
-const COOKIE_NAME = 'navsphere_admin_session'
-const SESSION_MAX_AGE = 60 * 60 * 24 * 7 // 7 天
+// ============ 签名核心：只用 Web Crypto API ============
 
 function bytesToHex(bytes: Uint8Array): string {
   let out = ''
@@ -37,33 +37,20 @@ function bytesToHex(bytes: Uint8Array): string {
   return out
 }
 
-// 返回 hex 字符串 —— 同时支持 Node.js crypto 和 Web Crypto
+// 全局 crypto 对象（Node.js 18+ 和 Edge Runtime 都支持）
+const crypto = (globalThis as any).crypto
+
 async function hmacHex(message: string, secretKey: string): Promise<string> {
-  // --- 方案 A: Node.js crypto 模块（最稳定，Vercel 默认 runtime） ---
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const nodeCrypto = require('crypto') as any
-    if (nodeCrypto?.createHmac) {
-      return nodeCrypto.createHmac('sha256', secretKey).update(message).digest('hex')
-    }
-  } catch { /* require 在 Edge Runtime 中不可用，忽略 */ }
-
-  // --- 方案 B: Web Crypto (globalThis.crypto.subtle) —— Edge Runtime 和 Node.js 18+ ---
-  const g = globalThis as any
-  if (g.crypto?.subtle) {
-    const enc = new TextEncoder()
-    const key = await g.crypto.subtle.importKey(
-      'raw',
-      enc.encode(secretKey),
-      { name: 'HMAC', hash: 'SHA-256' },
-      false,
-      ['sign', 'verify']
-    )
-    const sigBuf = await g.crypto.subtle.sign('HMAC', key, enc.encode(message))
-    return bytesToHex(new Uint8Array(sigBuf))
-  }
-
-  throw new Error('No crypto API available for HMAC signing')
+  const enc = new TextEncoder()
+  const key = await crypto.subtle.importKey(
+    'raw',
+    enc.encode(secretKey),
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign', 'verify']
+  )
+  const sigBuf = await crypto.subtle.sign('HMAC', key, enc.encode(message))
+  return bytesToHex(new Uint8Array(sigBuf))
 }
 
 // ============ Session API ============
@@ -81,7 +68,7 @@ export async function verifySessionCookie(cookieValue: string): Promise<boolean>
   if (idx < 0) return false
   const payload = cookieValue.slice(0, idx)
   const sig = cookieValue.slice(idx + 1)
-  if (sig.length < 32) return false
+  if (sig.length !== 64) return false // SHA-256 hex 是 64 位
 
   const secret = getAuthSecret()
   const expected = await hmacHex(payload, secret)
@@ -113,7 +100,6 @@ function parseCookieString(cookieHeader: string, name: string): string | null {
   return null
 }
 
-// 从各种来源中提取 session cookie 的值
 function extractSessionCookie(
   source?: string | Request | Headers | null
 ): string | null {
@@ -121,14 +107,12 @@ function extractSessionCookie(
   if (typeof source === 'string') {
     return parseCookieString(source, COOKIE_NAME)
   }
-  // Headers 对象或 Response 对象（有 .get 方法）
   if (typeof (source as any).get === 'function') {
     try {
       const cookieHeader = (source as Headers).get('cookie')
       return parseCookieString(cookieHeader || '', COOKIE_NAME)
     } catch { return null }
   }
-  // Request 对象
   if ((source as Request).headers) {
     try {
       const cookieHeader = (source as Request).headers.get('cookie')
@@ -140,9 +124,6 @@ function extractSessionCookie(
 
 // ============ 对外 API ============
 
-// auth(source): 从提供的 source 中读取 cookie 并校验
-// source 可以是: Cookie 字符串、Request 对象、Headers 对象
-// 不传 source 时，会尝试从 Next.js headers() 上下文读取
 export async function auth(
   source?: string | Request | Headers | null
 ): Promise<{
@@ -153,22 +134,6 @@ export async function auth(
 
     if (source) {
       cookieValue = extractSessionCookie(source)
-    }
-
-    // 如果没提供 source，尝试从 Next.js 上下文读取
-    if (!cookieValue) {
-      try {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const mod = require('next/headers') as any
-        if (mod.headers) {
-          const h = mod.headers()
-          // Next.js 15 中 headers() 返回 Promise<Headers>
-          const hdr: any = h && typeof h.then === 'function' ? await h : h
-          if (hdr) {
-            cookieValue = parseCookieString(hdr.get('cookie') || '', COOKIE_NAME)
-          }
-        }
-      } catch { /* 在构建/预渲染阶段 headers() 不可用 */ }
     }
 
     if (!cookieValue) return null

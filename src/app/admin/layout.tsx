@@ -20,14 +20,8 @@ export default async function AdminLayout({
 }: {
   children: React.ReactNode
 }) {
-  // 从请求头中读取 Cookie，避免直接用 cookies() API 导致的构建期错误
-  let cookieHeader = ''
-  try {
-    const h = await headers()
-    cookieHeader = h.get('cookie') || ''
-  } catch {
-    cookieHeader = ''
-  }
+  const h = await headers()
+  const cookieHeader = h.get('cookie') || ''
 
   const logged = await isLoggedIn(cookieHeader)
   if (!logged) {
