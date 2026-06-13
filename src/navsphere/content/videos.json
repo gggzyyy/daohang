@@ -34,40 +34,6 @@
       "subCategories": []
     },
     {
-      "id": "1769594403680",
-      "title": "七年级",
-      "icon": "PlayCircle",
-      "description": "",
-      "enabled": true,
-      "items": [],
-      "subCategories": [
-        {
-          "id": "61ed43d7-78f6-4eaa-881b-973c16a77f91",
-          "title": "语文",
-          "icon": "PlayCircle",
-          "description": "",
-          "enabled": true,
-          "items": [
-            {
-              "id": "1769595108871",
-              "title": "《沃尔特·施洛斯访谈资料集》  1985年：真材实料",
-              "href": "https://www.bilibili.com/video/BV1pM411i7a1/?spm_id_from=333.337.search-card.all.click",
-              "description": "读书分享：《沃尔特·施洛斯访谈资料集》 作者：不详",
-              "icon": "/assets/cover/cover_1769595135900.jpg",
-              "enabled": true,
-              "videoConfig": {
-                "type": "bilibili",
-                "bvid": "BV1pM411i7a1",
-                "aid": "523604377",
-                "cid": "986768320",
-                "p": 1
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "1769594423824",
       "title": "八年级",
       "icon": "PlayCircle",
