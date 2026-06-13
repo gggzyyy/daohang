@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server'
 import { getFileContent } from '@/lib/github'
 import { NavigationCategory, NavigationItem, NavigationData } from '@/types/navigation'
-export const runtime = 'edge'
 
 export async function GET() {
   try {
