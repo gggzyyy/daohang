@@ -1,4 +1,6 @@
-// 简单的账号密码登录系统 —— 不依赖 NextAuth，同时兼容 Node.js 和 Edge Runtime
+// 简单的账号密码登录系统
+// 签名: SHA-256(value + ':' + secret) 取前 32 位 hex
+// 同时兼容 Node.js runtime 和 Edge Runtime
 import { cookies } from 'next/headers'
 
 // ============ 配置读取 ============
@@ -12,7 +14,7 @@ export function getAuthSecret(): string {
 }
 
 // 读取管理员账号和密码
-export function getAdminCredentials() {
+export function getAdminCredentials(): { username: string; password: string } {
   const username = process.env.ADMIN_USERNAME || process.env.GITHUB_CLIENT_ID || 'admin'
   const password = process.env.ADMIN_PASSWORD || process.env.GITHUB_CLIENT_SECRET || 'admin123'
   return { username, password }
@@ -26,62 +28,95 @@ function getGitHubToken(): string {
   return 'admin-session-token'
 }
 
-// ============ Session Cookie (HMAC-SHA256) ============
+// ============ 签名 / 校验 (纯 Web Crypto + hex) ============
 
 const COOKIE_NAME = 'navsphere_admin_session'
 const SESSION_MAX_AGE = 60 * 60 * 24 * 7 // 7 天
+const SIGNATURE_LEN = 32 // 取 SHA-256 哈希 hex 的前 32 位做签名
 
-// Uint8Array -> base64（Node.js 18+ 和 Edge Runtime 都提供 btoa）
-function bytesToBase64(bytes: Uint8Array): string {
-  let binary = ''
-  for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i])
-  return globalThis.btoa(binary)
+// Uint8Array -> hex
+function bytesToHex(bytes: Uint8Array): string {
+  let out = ''
+  for (let i = 0; i < bytes.length; i++) {
+    out += bytes[i].toString(16).padStart(2, '0')
+  }
+  return out
 }
 
-// 使用 Web Crypto API（Node.js 18+ 和 Edge Runtime 都原生支持 globalThis.crypto.subtle）
-async function hmacSign(message: string, secretKey: string): Promise<string> {
-  const subtle = globalThis.crypto.subtle
-  const enc = new TextEncoder()
-  const keyData = await subtle.digest('SHA-256', enc.encode(secretKey))
-  const key = await subtle.importKey(
-    'raw',
-    keyData,
-    { name: 'HMAC', hash: 'SHA-256' },
-    false,
-    ['sign', 'verify']
-  )
-  const sigBuffer = await subtle.sign('HMAC', key, enc.encode(message))
-  return bytesToBase64(new Uint8Array(sigBuffer))
+// hex -> Uint8Array（校验时用）
+function hexToBytes(hex: string): Uint8Array {
+  const out = new Uint8Array(hex.length / 2)
+  for (let i = 0; i < hex.length; i += 2) {
+    out[i / 2] = parseInt(hex.slice(i, i + 2), 16)
+  }
+  return out
 }
+
+// 获取 crypto.subtle（Node.js 20+ 和 Edge Runtime 都原生支持）
+function getSubtle(): SubtleCrypto {
+  const g = globalThis as any
+  if (g.crypto?.subtle) return g.crypto.subtle
+  // Node.js 18 的兜底（虽然本项目 engines >= 20）
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const nc = require('crypto')
+    if (nc?.webcrypto?.subtle) return nc.webcrypto.subtle
+  } catch { /* noop */ }
+  throw new Error('crypto.subtle not available')
+}
+
+// 计算 SHA-256，返回 hex 字符串
+async function sha256Hex(text: string): Promise<string> {
+  const subtle = getSubtle()
+  const data = new TextEncoder().encode(text)
+  const hashBuffer = await subtle.digest('SHA-256', data)
+  return bytesToHex(new Uint8Array(hashBuffer))
+}
+
+// 签名: payload -> "payload:signature"
+async function signPayload(payload: string, secret: string): Promise<string> {
+  const sig = await sha256Hex(payload + ':' + secret)
+  return payload + ':' + sig.slice(0, SIGNATURE_LEN)
+}
+
+// 校验签名，返回 payload 或 null
+async function verifyPayload(signed: string, secret: string): Promise<string | null> {
+  const idx = signed.lastIndexOf(':')
+  if (idx < 0) return null
+  const payload = signed.slice(0, idx)
+  const sig = signed.slice(idx + 1)
+  const expected = (await sha256Hex(payload + ':' + secret)).slice(0, SIGNATURE_LEN)
+  if (sig.length !== SIGNATURE_LEN) return null
+  if (expected !== sig) return null
+  return payload
+}
+
+// ============ Session API ============
 
 export async function createSessionCookie(): Promise<string> {
-  const payload = `admin.${Date.now()}`
-  const sig = await hmacSign(payload, getAuthSecret())
-  return `${payload}.${sig}`
+  const payload = 'admin.' + Date.now()
+  const secret = getAuthSecret()
+  return signPayload(payload, secret)
 }
 
 export async function verifySessionCookie(cookieValue: string): Promise<boolean> {
   if (!cookieValue) return false
-  const idx = cookieValue.lastIndexOf('.')
-  if (idx < 0) return false
-  const payload = cookieValue.slice(0, idx)
-  const sig = cookieValue.slice(idx + 1)
+  const secret = getAuthSecret()
+  const payload = await verifyPayload(cookieValue, secret)
+  if (!payload) return false
   const parts = payload.split('.')
   if (parts[0] !== 'admin') return false
-  const timestamp = parseInt(parts[1], 10)
-  if (!timestamp) return false
-  if (Date.now() - timestamp >= SESSION_MAX_AGE * 1000) return false
-  const expected = await hmacSign(payload, getAuthSecret())
-  return sig === expected
+  const ts = parseInt(parts[1], 10)
+  if (!ts) return false
+  if (Date.now() - ts >= SESSION_MAX_AGE * 1000) return false
+  return true
 }
 
-// ============ 读取 Cookie ============
+// ============ 读取 Cookie 并校验登录态 ============
 
-// 从请求上下文读取 session cookie。try-catch 确保构建期不会出错
+// 从请求上下文读取 session cookie 并校验
 async function readSessionCookie(): Promise<string | null> {
   try {
-    // cookies() 在 Next.js 不同版本可能返回 Promise 或直接对象，
-    // 用类型 cast 绕过 TS 类型差异，运行时统一用 Promise.all 风格处理
     const cookieResult: any = cookies()
     let store: any = null
     if (cookieResult && typeof cookieResult.then === 'function') {
@@ -93,14 +128,12 @@ async function readSessionCookie(): Promise<string | null> {
     const found = store.get(COOKIE_NAME)
     return found?.value ?? null
   } catch {
-    // cookies() 在构建期/非请求上下文内会报错，此时返回 null
     return null
   }
 }
 
-// ============ 对外 API ============
+// ============ 对外 API（向后兼容） ============
 
-// 向后兼容: 模拟原来 NextAuth 的 auth() 返回结构
 export async function auth(): Promise<{
   user: { accessToken: string; name: string; email: string }
 } | null> {
@@ -121,20 +154,17 @@ export async function auth(): Promise<{
   }
 }
 
-// 检查是否已登录（供 layout 使用）
 export async function isLoggedIn(): Promise<boolean> {
   const session = await auth()
   return session !== null
 }
 
-// 获取当前用户信息
 export async function getCurrentUser(): Promise<{ name: string; email: string } | null> {
   const session = await auth()
   if (!session) return null
   return { name: session.user.name, email: session.user.email }
 }
 
-// Cookie 配置
 export function getCookieConfig() {
   return {
     name: COOKIE_NAME,
