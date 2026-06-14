@@ -7,7 +7,7 @@ import navigationData from '@/navsphere/content/navigation.json'
 import siteDataRaw from '@/navsphere/content/site.json'
 import { getProcessedData } from '@/lib/data-loader'
 
-export const revalidate = 60
+export const revalidate = 10
 
 const BASE = process.env.VERCEL_URL 
   ? `https://${process.env.VERCEL_URL}` 
@@ -16,14 +16,15 @@ const BASE = process.env.VERCEL_URL
     : ''
 
 async function getData() {
-  // 构建时使用静态导入，运行时从 API 获取最新数据
+  // 构建时使用静态导入
   if (!BASE) {
     return getProcessedData(navigationData, siteDataRaw)
   }
+  // 运行时始终从 API 获取最新数据（ISR 每10秒刷新）
   try {
     const [navData, siteInfo] = await Promise.all([
-      fetch(`${BASE}/api/home/navigation`, { next: { revalidate: 60 } }),
-      fetch(`${BASE}/api/home/site`, { next: { revalidate: 60 } })
+      fetch(`${BASE}/api/home/navigation`, { next: { revalidate: 10 } }),
+      fetch(`${BASE}/api/home/site`, { next: { revalidate: 10 } })
     ])
     if (!navData.ok || !siteInfo.ok) throw new Error('API not ready')
     const [liveNav, liveSite] = await Promise.all([
@@ -32,7 +33,6 @@ async function getData() {
     ])
     return { navigationData: liveNav, siteData: liveSite }
   } catch {
-    // API 不可用时降级到静态数据（构建时或首次启动）
     return getProcessedData(navigationData, siteDataRaw)
   }
 }
