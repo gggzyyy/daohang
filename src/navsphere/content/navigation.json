@@ -275,9 +275,9 @@
             },
             {
               "id": "1760605598288",
-              "title": "veo-3",
+              "title": "veo-3谷歌推出的新一代 AI 视频生成模型",
               "href": "https://aistudio.google.com/models/veo-3",
-              "description": "The fastest path from prompt to production with Gemini",
+              "description": "依托 Gemini，实现从提示词到成品视频的最快路径",
               "icon": "/assets/favicon_1760605601454.webp",
               "enabled": true
             }
