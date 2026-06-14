@@ -1478,6 +1478,15 @@
           ]
         }
       ]
+    },
+    {
+      "id": "1781427954598",
+      "title": "保留分类",
+      "icon": "Folder",
+      "description": "尚未归口的分类",
+      "enabled": true,
+      "items": [],
+      "subCategories": []
     }
   ]
 }
