@@ -68,6 +68,14 @@
           "description": "Github",
           "icon": "/assets/images/default-website-icon.png",
           "enabled": true
+        },
+        {
+          "id": "site_1781451276703_huiqccrbo",
+          "title": "Skills Hub | Hermes Agent",
+          "href": "https://hermes-agent.nousresearch.com/docs/skills",
+          "description": "Hermes Agent市场",
+          "icon": "/assets/favicon_1781451258763.ico",
+          "enabled": true
         }
       ],
       "subCategories": [],
