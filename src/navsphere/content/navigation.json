@@ -14,14 +14,6 @@
           "enabled": true
         },
         {
-          "id": "1_1",
-          "title": "Google Analytics",
-          "href": "https://analytics.google.com/",
-          "description": "Google分析（Google Analytics）是一个由Google所提供的网站流量统计服务。谷歌推出的免费网站与应用流量分析工具，也是全球最主流的用户行为分析平台之一",
-          "icon": "/assets/images/logos/analytics.webp",
-          "enabled": true
-        },
-        {
           "id": "1_4",
           "title": "Google AdSense",
           "href": "https://www.google.com/adsense/",
@@ -1485,7 +1477,16 @@
       "icon": "Folder",
       "description": "尚未归口的分类",
       "enabled": true,
-      "items": [],
+      "items": [
+        {
+          "id": "1_1",
+          "title": "Google Analytics",
+          "href": "https://analytics.google.com/",
+          "description": "Google分析（Google Analytics）是一个由Google所提供的网站流量统计服务。谷歌推出的免费网站与应用流量分析工具，也是全球最主流的用户行为分析平台之一",
+          "icon": "/assets/images/logos/analytics.webp",
+          "enabled": true
+        }
+      ],
       "subCategories": []
     }
   ]
