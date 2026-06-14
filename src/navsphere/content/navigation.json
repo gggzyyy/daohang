@@ -52,14 +52,6 @@
           "href": "https://trends.google.com/trends/",
           "description": "",
           "icon": "/assets/favicon_1765686636721.webp"
-        },
-        {
-          "id": "item-1765687115114",
-          "enabled": true,
-          "title": "PageSpeed Insights",
-          "href": "https://pagespeed.web.dev/",
-          "description": "",
-          "icon": "/assets/favicon_1765687105275.webp"
         }
       ],
       "subCategories": [],
@@ -1468,6 +1460,14 @@
           "href": "https://www.producthunt.com/",
           "description": "发现新鲜有趣的产。品全球知名的新产品发现社区，标语 “发现新鲜有趣的产品” 精准概括了它的定位",
           "icon": "/assets/images/logos/producthunt.webp",
+          "enabled": true
+        },
+        {
+          "id": "item-1765687115114",
+          "title": "PageSpeed Insights",
+          "href": "https://pagespeed.web.dev/",
+          "description": "谷歌推出的免费网站性能分析工具，用于评估网页的加载速度和用户体验。",
+          "icon": "/assets/favicon_1765687105275.webp",
           "enabled": true
         }
       ],
