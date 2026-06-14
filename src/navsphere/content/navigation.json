@@ -263,15 +263,6 @@
             }
           ],
           "enabled": true
-        },
-        {
-          "id": "4",
-          "title": "图形创意",
-          "href": "#图形创意",
-          "icon": "Folder",
-          "description": "",
-          "items": [],
-          "enabled": true
         }
       ],
       "description": "",
