@@ -689,7 +689,16 @@
           "icon": "Image",
           "description": "",
           "enabled": true,
-          "items": []
+          "items": [
+            {
+              "id": "site_1781430000205_5f8fa4ogk",
+              "title": "Inpaint-web",
+              "href": "https://inpaintweb.lxfater.com/",
+              "description": "去水印工具",
+              "icon": "https://www.google.com/s2/favicons?sz=128&domain=inpaintweb.lxfater.com",
+              "enabled": true
+            }
+          ]
         }
       ]
     },
