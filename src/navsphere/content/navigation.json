@@ -212,23 +212,6 @@
           ]
         },
         {
-          "id": "eb656a11-5442-4670-9cb6-9ba9bd08682f",
-          "title": "AI 代码生成助手",
-          "icon": "Book",
-          "description": "",
-          "enabled": true,
-          "items": [
-            {
-              "id": "1760513538759",
-              "title": "v0 by Vercel",
-              "href": "https://v0.app/",
-              "description": "Your collaborative AI assistant to design, iterate, and scale full-stack applications for the web.",
-              "icon": "/assets/favicon_1760513560381.webp",
-              "enabled": true
-            }
-          ]
-        },
-        {
           "id": "8f5e0374-2ee9-4012-acac-baecb515d826",
           "title": "提示词助手",
           "icon": "Book",
