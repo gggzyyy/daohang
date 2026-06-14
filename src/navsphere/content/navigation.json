@@ -241,15 +241,6 @@
       "enabled": true
     },
     {
-      "id": "2",
-      "title": "常用工具",
-      "icon": "Laptop",
-      "items": [],
-      "subCategories": [],
-      "description": "",
-      "enabled": true
-    },
-    {
       "id": "1735433560958",
       "title": "自媒体工具包",
       "icon": "Video",
