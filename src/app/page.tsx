@@ -3,21 +3,19 @@ import { Metadata } from 'next/types'
 import { ScrollToTop } from '@/components/ScrollToTop'
 import { Container } from '@/components/ui/container'
 import type { SiteConfig } from '@/types/site'
+import navigationData from '@/navsphere/content/navigation.json'
+import siteDataRaw from '@/navsphere/content/site.json'
 
-export const dynamic = 'force-dynamic'
+import { getProcessedData } from '@/lib/data-loader'
 
-async function getData() {
-  const navRes = await fetch('https://9277277.xyz/api/home/navigation', { cache: 'no-store' })
-  const siteRes = await fetch('https://9277277.xyz/api/home/site', { cache: 'no-store' })
-  const [navigationData, siteData] = await Promise.all([
-    navRes.json(),
-    siteRes.json()
-  ])
-  return { navigationData, siteData }
+export const revalidate = 60
+
+function getData() {
+  return getProcessedData(navigationData, siteDataRaw)
 }
 
-export async function generateMetadata(): Promise<Metadata> {
-  const { siteData } = await getData()
+export function generateMetadata(): Metadata {
+  const { siteData } = getData()
 
   return {
     title: siteData.basic.title,
@@ -29,8 +27,8 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function HomePage() {
-  const { navigationData, siteData } = await getData()
+export default function HomePage() {
+  const { navigationData, siteData } = getData()
 
   return (
     <Container>
