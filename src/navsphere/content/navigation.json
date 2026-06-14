@@ -238,14 +238,6 @@
       "icon": "Laptop",
       "items": [
         {
-          "id": "1_2",
-          "title": "Vercel",
-          "href": "https://vercel.com/",
-          "description": "Vercel 提供开发者工具和云基础设施，帮助构建、扩展和保护更快、更个性化的网络应用。",
-          "icon": "/assets/images/logos/vercel.webp",
-          "enabled": true
-        },
-        {
           "id": "site_1781409097528_a5qg1er1j",
           "title": "YouTube",
           "href": "https://www.youtube.com/",
@@ -1103,6 +1095,14 @@
               "href": "https://free-for.dev/#/",
               "description": "是一个面向开发者的现代 Web 开发平台，主打静态网站托管、无服务器函数和持续部署服务。",
               "icon": "/assets/favicon_1760507241370.webp",
+              "enabled": true
+            },
+            {
+              "id": "1_2",
+              "title": "Vercel",
+              "href": "https://vercel.com/",
+              "description": "Vercel 提供开发者工具和云基础设施，帮助构建、扩展和保护更快、更个性化的网络应用。",
+              "icon": "/assets/images/logos/vercel.webp",
               "enabled": true
             }
           ]
