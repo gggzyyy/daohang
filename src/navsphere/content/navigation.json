@@ -259,9 +259,9 @@
             },
             {
               "id": "1760435417839",
-              "title": "Sora",
+              "title": "Sora文生视频 AI 模型",
               "href": "https://sora.chatgpt.com/",
-              "description": "Transform text and images into immersive videos. Animate stories, visualize ideas, and bring your concepts to life.",
+              "description": "OpenAI 推出的文本 / 图像生成视频模型",
               "icon": "/assets/favicon_1760435422176.webp",
               "enabled": true
             },
