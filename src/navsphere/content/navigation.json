@@ -606,6 +606,14 @@
               "description": "Simple line Icons pack",
               "icon": "/assets/images/logos/simplelineicons.webp",
               "enabled": true
+            },
+            {
+              "id": "site_1781430042349_n88p8h6xy",
+              "title": "Seeklogo",
+              "href": "https://seeklogo.com/",
+              "description": "品牌矢量图",
+              "icon": "/assets/favicon_1781430022764.png",
+              "enabled": true
             }
           ]
         },
