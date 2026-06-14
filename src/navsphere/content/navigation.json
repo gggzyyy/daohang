@@ -682,6 +682,14 @@
               "enabled": true
             }
           ]
+        },
+        {
+          "id": "a5787a13-4a0d-432a-9360-5d3090acc4fe",
+          "title": "在线工具",
+          "icon": "Image",
+          "description": "",
+          "enabled": true,
+          "items": []
         }
       ]
     },
