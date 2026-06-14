@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import { auth } from '@/lib/auth'
 import { commitFile, getFileContent } from '@/lib/github'
 import type { SiteInfo } from '@/types/site'
@@ -45,7 +46,8 @@ export async function POST(request: Request) {
       session.user.accessToken
     )
 
-    return NextResponse.json({ success: true })
+    revalidatePath('/', 'layout')
+        return NextResponse.json({ success: true, message: '站点已同步' })
   } catch (error) {
     console.error('Failed to save site data:', error)
     return NextResponse.json(

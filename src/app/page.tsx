@@ -3,19 +3,28 @@ import { Metadata } from 'next/types'
 import { ScrollToTop } from '@/components/ScrollToTop'
 import { Container } from '@/components/ui/container'
 import type { SiteConfig } from '@/types/site'
-import navigationData from '@/navsphere/content/navigation.json'
-import siteDataRaw from '@/navsphere/content/site.json'
-
 import { getProcessedData } from '@/lib/data-loader'
 
 export const revalidate = 60
 
-function getData() {
-  return getProcessedData(navigationData, siteDataRaw)
+const BASE = process.env.VERCEL_URL 
+  ? `https://${process.env.VERCEL_URL}` 
+  : 'http://localhost:3000'
+
+async function getData() {
+  const [navRes, siteRes] = await Promise.all([
+    fetch(`${BASE}/api/home/navigation`, { next: { revalidate: 60 } }),
+    fetch(`${BASE}/api/home/site`, { next: { revalidate: 60 } })
+  ])
+  const [navigationData, siteData] = await Promise.all([
+    navRes.json(),
+    siteRes.json()
+  ])
+  return { navigationData, siteData }
 }
 
-export function generateMetadata(): Metadata {
-  const { siteData } = getData()
+export async function generateMetadata(): Promise<Metadata> {
+  const { siteData } = await getData()
 
   return {
     title: siteData.basic.title,
@@ -27,8 +36,8 @@ export function generateMetadata(): Metadata {
   }
 }
 
-export default function HomePage() {
-  const { navigationData, siteData } = getData()
+export default async function HomePage() {
+  const { navigationData, siteData } = await getData()
 
   return (
     <Container>

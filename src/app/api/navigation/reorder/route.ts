@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import { auth } from '@/lib/auth'
 import { commitFile, getFileContent } from '@/lib/github'
 import type { NavigationData, NavigationItem } from '@/types/navigation'
@@ -40,6 +41,10 @@ export async function POST(request: Request) {
       `重新排序导航项 - ${new Date().toISOString()}`,
       session.user.accessToken
     )
+
+    // 刷新前端页面缓存
+    revalidatePath('/', 'layout')
+    revalidatePath('/api/home/navigation', 'page')
 
     return NextResponse.json(data.navigationItems, { status: 200 })
   } catch (error) {
