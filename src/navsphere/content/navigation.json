@@ -30,14 +30,6 @@
           "enabled": true
         },
         {
-          "id": "1760507233911",
-          "title": "Free for Developers",
-          "href": "https://free-for.dev/#/",
-          "description": "Developers and Open Source authors now have a massive amount of services offering free tiers, but it can be hard to find them all to make informed decisions.",
-          "icon": "/assets/favicon_1760507241370.webp",
-          "enabled": true
-        },
-        {
           "id": "1761724833829",
           "title": "Hacker News",
           "href": "https://news.ycombinator.com/",
@@ -1152,6 +1144,14 @@
               "href": "https://edgeone.ai/zh",
               "description": "Tencent EdgeOne，亚洲领先的CDN，利用腾讯先进的边缘节点提供卓越的边缘解决方案，用于加速、安全、无服务器和视频。",
               "icon": "/assets/favicon_1755225933031.webp",
+              "enabled": true
+            },
+            {
+              "id": "1760507233911",
+              "title": "Free for Developers",
+              "href": "https://free-for.dev/#/",
+              "description": "是一个面向开发者的现代 Web 开发平台，主打静态网站托管、无服务器函数和持续部署服务。",
+              "icon": "/assets/favicon_1760507241370.webp",
               "enabled": true
             }
           ]
