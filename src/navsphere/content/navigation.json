@@ -245,26 +245,7 @@
       "title": "常用工具",
       "icon": "Laptop",
       "items": [],
-      "subCategories": [
-        {
-          "id": "3",
-          "title": "在线工具",
-          "href": "#在线工具",
-          "icon": "Folder",
-          "description": "",
-          "items": [
-            {
-              "id": "3_1",
-              "title": "TableConvert",
-              "href": "https://tableconvert.com/",
-              "description": "Excel转sql在线工具。将你的Excel数据转换成一个网络友好格式,包括HTML、JSON和XML,还可以把Excel 转换成Sql,excel 表格转成 Markdown",
-              "icon": "/assets/images/logos/tableconvert.webp",
-              "enabled": true
-            }
-          ],
-          "enabled": true
-        }
-      ],
+      "subCategories": [],
       "description": "",
       "enabled": true
     },
