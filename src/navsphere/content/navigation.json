@@ -780,7 +780,7 @@
               "id": "1760512389014",
               "title": "Docusaurus",
               "href": "https://docusaurus.io/",
-              "description": "Build optimized websites quickly, focus on your content.",
+              "description": "一款由 Meta 推出的开源静态网站生成器，快速构建高性能、SEO 友好的文档网站",
               "icon": "/assets/favicon_1760512394163.webp",
               "enabled": true
             },
