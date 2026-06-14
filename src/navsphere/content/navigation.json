@@ -614,6 +614,14 @@
               "description": "品牌矢量图",
               "icon": "/assets/favicon_1781430022764.png",
               "enabled": true
+            },
+            {
+              "id": "site_1781430083247_d19h2c1ha",
+              "title": "Pixabay",
+              "href": "https://pixabay.com/",
+              "description": "大量图标图片、矢量图",
+              "icon": "/assets/favicon_1781430062669.png",
+              "enabled": true
             }
           ]
         },
