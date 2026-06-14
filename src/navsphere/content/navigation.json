@@ -274,15 +274,6 @@
           "enabled": true
         },
         {
-          "id": "5",
-          "title": "界面设计",
-          "href": "#界面设计",
-          "icon": "Folder",
-          "description": "",
-          "items": [],
-          "enabled": true
-        },
-        {
           "id": "7",
           "title": "在线配色",
           "href": "#在线配色",
