@@ -30,14 +30,6 @@
           "enabled": true
         },
         {
-          "id": "1754229699374",
-          "title": "Lucide",
-          "href": "https://lucide.dev/",
-          "description": "Beautiful & consistent icon toolkit made by the community.",
-          "icon": "/assets/favicon_1754229702059.webp",
-          "enabled": true
-        },
-        {
           "id": "1760507233911",
           "title": "Free for Developers",
           "href": "https://free-for.dev/#/",
@@ -1209,6 +1201,14 @@
               "href": "https://lottiefiles.com/",
               "description": "Effortlessly bring the smallest, free, ready-to-use motion graphics for the web, app, social, and designs. Create, edit, test, collaborate, and ship Lottie animations in no time!",
               "icon": "/assets/favicon_1760427449858.webp",
+              "enabled": true
+            },
+            {
+              "id": "1754229699374",
+              "title": "Lucide",
+              "href": "https://lucide.dev/",
+              "description": "一款免费开源的图标工具库，美观、风格统一的图标工具包。",
+              "icon": "/assets/favicon_1754229702059.webp",
               "enabled": true
             }
           ]
