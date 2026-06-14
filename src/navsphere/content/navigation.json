@@ -283,15 +283,6 @@
           "enabled": true
         },
         {
-          "id": "6",
-          "title": "交互动效",
-          "href": "#交互动效",
-          "icon": "Book",
-          "description": "",
-          "items": [],
-          "enabled": true
-        },
-        {
           "id": "7",
           "title": "在线配色",
           "href": "#在线配色",
